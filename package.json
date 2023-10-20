@@ -1,0 +1,16 @@
+{
+  "name": "iso-message",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Creates iso8583 messages",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "Ioan Labici",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
