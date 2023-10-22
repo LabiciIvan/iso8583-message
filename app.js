@@ -55,16 +55,50 @@ const jsonFile = [
 		bitmap: 64,
 		name: 'browserData',
 		length: '50',
-		content: 'Browser Safari x(64) Pro 1 Device lock',
+		content: 'Browser Opera x(64) Pro 1 Device Machine',
 		options: 'prefix-length: l-4'
+	},
+	{
+		bitmap: 65,
+		name: 'merchantDetails',
+		length: '50',
+		options: 'fill-left: 0',
+		content: [
+			{
+				bitmap: 1,
+				name: 'merchantName',
+				length: '20',
+				content: 'John Doe',
+				options: 'fill-left: space'
+			},
+			{
+				bitmap: 2,
+				name: 'merchantInsitutionCode',
+				length: '6',
+				content: '115588',
+				options: 'prefix-char: MIC'
+			},
+			{
+				bitmap: 3,
+				name: 'merchantPostCode',
+				length: '50',
+				content: 'HA1 1TU',
+				options: 'prefix-char: MPC'
+			},
+		]
 	}
 ];
 
 // Execute the ISO Builder
 try {
 
-	const isoMessage = new BuilderISO(jsonFile);
-	isoMessage.getMessage();
+	const builderISO	= new BuilderISO(jsonFile);
+	const iso8583		= builderISO.getMessage();
+
+	const bitmapStrings	= builderISO.getPrimarySecondaryBM();
+
+	const primaryHEX	= builderISO.createHexPrimarySecondary(bitmapStrings.primary);
+	const secondaryHEX	= builderISO.createHexPrimarySecondary(bitmapStrings.secondary);
 	
 } catch (error) {
 	console.log('Error on ISO', error);
