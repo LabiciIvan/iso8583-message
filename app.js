@@ -1,4 +1,4 @@
-import {BuilderISO} from './iso.js';
+import {BuilderISO} from './backend/iso.js';
 
 const jsonFile = [
 	{
@@ -99,7 +99,7 @@ try {
 
 	const primaryHEX	= builderISO.createHexPrimarySecondary(bitmapStrings.primary);
 	const secondaryHEX	= builderISO.createHexPrimarySecondary(bitmapStrings.secondary);
-	
+
 } catch (error) {
 	console.log('Error on ISO', error);
 }
